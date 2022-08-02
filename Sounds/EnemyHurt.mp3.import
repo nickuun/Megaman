@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EnemyHurt.mp3-2c43882c92f58cfb07d7c301a7c9c94b.mp3str"
+
+[deps]
+
+source_file="res://Sounds/EnemyHurt.mp3"
+dest_files=[ "res://.import/EnemyHurt.mp3-2c43882c92f58cfb07d7c301a7c9c94b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

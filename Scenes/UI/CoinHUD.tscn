@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/objects/coin/CoinSprite-0001.png" type="Texture" id=1]
+[ext_resource path="res://addons/Fonts/Akshar-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/UI/CoinHUD.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 4, 4 )
+frames = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 17.0
+margin_top = -1.0
+margin_right = 33.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.988235, 0.588235, 0.0666667, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "$$"
+
+[node name="x" type="Label" parent="."]
+margin_left = 10.0
+margin_top = -2.0
+margin_right = 26.0
+margin_bottom = 23.0
+custom_colors/font_color = Color( 0.988235, 0.588235, 0.0666667, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "x
+"

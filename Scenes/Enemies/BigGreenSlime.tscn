@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/enemy/slimes/enemies/bigGreen/GreenIdle-002.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/enemy/slimes/enemies/bigGreen/GreenIdle-001.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/enemy/slimes/enemies/bigGreen/GreenIdle-003.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/enemy/slimes/enemies/bigGreen/GreenIdle-004.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Enemies/BigGreenSlime.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[node name="BigGreenSlime" type="KinematicBody2D"]
+collision_layer = 32
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Sprites/Wizard/orb/Flying001.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/magicImpact.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/FireballShot-[AudioTrimmer.com].wav" type="AudioStream" id=4]
+[ext_resource path="res://Sprites/Wizard/orb/Default-0002.png" type="Texture" id=5]
+[ext_resource path="res://yelloLight.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Wizard/orb/Default-0003.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Wizard/orb/Default-0001.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "break",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "move",
+"speed": 7.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 35.7143
+height = 0.0
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.464646, 1 )
+colors = PoolColorArray( 0.458824, 0.027451, 0.933333, 0, 0.727287, 0.753906, 0.491806, 0.345098, 0.776471, 0.831373, 0.141176, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=4]
+max_value = 2.0
+_data = [ Vector2( 0.0143198, 1.30909 ), 0.0, 0.0, 0, 0, Vector2( 0.98568, 0.436364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 19.322, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 36.16
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 0.32
+angular_velocity = 302.47
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -25.0
+angle = 70.4
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 7 )
+hue_variation = 0.43
+hue_variation_random = 0.78
+
+[node name="Area2D" type="Area2D"]
+position = Vector2( 5, 0 )
+scale = Vector2( 0.7, 0.7 )
+collision_mask = 184
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1.42857, 0 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 2 )
+animation = "move"
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 3.8147e-07, 3.8147e-07 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 16568
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.12, 0.12 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -30.0
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -24.0
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( -20, 1.42857 )
+rotation = 1.5708
+scale = Vector2( 1.6, 1.6 )
+amount = 200
+lifetime = 3.0
+local_coords = false
+process_material = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
+
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

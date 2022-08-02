@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/GooSpat.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.411765, 0.843137, 0.172549, 1, 0.0431373, 0.34902, 0.352941, 0.156863 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.0163043, 0.821591 ), 0.0, -0.680658, 0, 0, Vector2( 0.13587, 0.967045 ), 0.0, 0.0, 0, 0, Vector2( 0.434783, 0.3125 ), 0.0, 0.0, 0, 0, Vector2( 0.75, 0.167045 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -4.56198, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -20.0
+damping = 400.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="GooSpat" type="Particles2D"]
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.2
+process_material = SubResource( 5 )
+script = ExtResource( 1 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FireballShotTwo.wav-2e06477989abeda96103da5ec47fd7f6.sample"
+
+[deps]
+
+source_file="res://Sounds/FireballShotTwo.wav"
+dest_files=[ "res://.import/FireballShotTwo.wav-2e06477989abeda96103da5ec47fd7f6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

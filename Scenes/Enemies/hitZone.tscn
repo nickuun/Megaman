@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Enemies/hitZone.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2.5, 2.33333 )
+
+[node name="hitZone" type="Area2D"]
+collision_layer = 256
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_hitZone_body_entered"]

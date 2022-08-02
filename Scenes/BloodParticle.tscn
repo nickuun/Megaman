@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.010929, 1 )
+colors = PoolColorArray( 0.686275, 0.929412, 0.0392157, 1, 0.686275, 0.929412, 0.0392157, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 1
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Blood"
+
+[sub_resource type="Animation" id=5]
+resource_name = "Lifetime"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.3, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="BloodParticle" type="RigidBody2D"]
+show_behind_parent = true
+collision_layer = 65536
+collision_mask = 65672
+mass = 0.18
+gravity_scale = 0.8
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, 1 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Lifetime"
+anims/Blood = SubResource( 4 )
+anims/Lifetime = SubResource( 5 )
+anims/RESET = SubResource( 6 )

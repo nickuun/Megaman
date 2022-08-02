@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/coinLand.mp3-a26f145fd3bd5adfdde5c2f7a486c1d1.mp3str"
+
+[deps]
+
+source_file="res://Sounds/coinLand.mp3"
+dest_files=[ "res://.import/coinLand.mp3-a26f145fd3bd5adfdde5c2f7a486c1d1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
