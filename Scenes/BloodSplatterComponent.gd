@@ -4,7 +4,7 @@ extends Node2D
 export var BloodParticleScene : PackedScene
 export var plantParticle : PackedScene
 export var BlooadParticleNumber := 19
-export var RandomVelocity := 10
+export var RandomVelocity := 130
 
 const BloodSplatterSignalName := "OnDeath"
 
